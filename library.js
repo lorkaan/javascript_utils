@@ -7,7 +7,7 @@
  * @author: Laurkan Rodriguez
  * @date: 13/11/2018
  */
- 
+
  /** License Information
   *
   * This is licensed under the Creative Commons License.
@@ -15,10 +15,10 @@
   * < Actual License stuff is to be put here >
   *
   */
- 
+
  /** Unobtrusive Javascript style of creating a library. */
- var utils = function(){
- 
+ export var utils = function(){
+
   /** Function for determining if a given parameter is
  * to be considered as a null value.
  *
@@ -50,7 +50,7 @@
       return false; // anything else.
     }
   }
-  
+
   /** Checking number of arguments is pointless since arbitrary number
    *  of arguments can be added via the bind function.
    *
@@ -65,7 +65,7 @@
       return false;
     }
   }
-  
+
   /** Checks if a given parameter is a boolean.
    *
    * Generally reccomended to use the satization function toBoolean()
@@ -85,7 +85,7 @@
       return false;
     }
   }
-  
+
   /** Converts a given parameter to a Boolean
    * using either a custom function or the
    * default Boolean() function.
@@ -105,7 +105,7 @@
       return Boolean(obj);
     }
   }
-  
+
   /** Determines if a given parameter is a Number.
    *
    * Note: The conditionFunc must return a Boolean in order to work propperly.
@@ -128,7 +128,7 @@
       return false;
     }
   }
-  
+
   /** Determines if a given parameter is an Integer.
    *
    * Separate from the isNumber() function for ease of use and clarity of code.
@@ -153,7 +153,7 @@
       return false;
     }
   }
-  
+
   /** Determines if a given parameter is an Object
    * Optionally can also check if the object satisfies the
    * the following conditions:-
@@ -170,7 +170,7 @@
       if(isNull(keys)){
         return true;  // basic object.
       }else if(isArray(keys)){  // List of necessary properties
-        
+
       }else if(isFunction(keys) && obj instanceof keys){  // Class definition of object.
         return true;
       }else{  // bad input for the keys parameter.
@@ -180,7 +180,7 @@
       return false;
     }
   }
-  
+
   /** Checks if a given parameter is an Array that is at least as big as
    * a given size.
    *
@@ -200,7 +200,7 @@
       return false;
     }
   }
-  
+
   /** Determines if a given parameter is a string,
    * Optionally determines if that parameter is a string
    * that is either equal to another given string or satisfies
@@ -237,7 +237,7 @@
       return false;
     }
   }
-  
+
   /** Specifically tests if a given parameter is an empty string.
    * Not to be used in conjunction with isString, but only when
    * a specifcally empty string is required.

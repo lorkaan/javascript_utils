@@ -5,9 +5,9 @@
  *
  * @author: Laurkan Rodriguez
  */
- 
- var xhr = function(){
-   
+
+ export var xhr = function(){
+
    /** The strings representing the types of responses
     * allowed by the XMLHttpRequest.
     *
@@ -24,7 +24,7 @@
        "json"
     ]
    };
-   
+
    /** Defines the allowed methods that an XMLHttpRequest is able to
     * use for the method field.
     *
@@ -37,7 +37,7 @@
        "post"
        ]
    };
-   
+
    /** Validates and, if necessary, sanitizes a given method
     * string in order to prevent bad input and injection to the method
     * field of the XMLHttpRequest.
@@ -61,7 +61,7 @@
        return methodLiterals.default;
      }
    }
-   
+
    /** Validates and, if necessary, sanitizes a given response type
     * string in order to prevent bad input and injection to the response type
     * field of the XMLHttpRequest.
@@ -86,7 +86,7 @@
        return responseTypeLiterals.default;
      }
    }
-   
+
    /** Creates a Promise for performing XMLHttpRequests
     * to obtain a file from a URL, or appropiate file path.
     *
@@ -97,7 +97,7 @@
      return new Promise(function(success, failure){
        let xhr_obj = new XMLHttpRequest();
        xhr_obj.open(validateAndSanitizeMethod(method), file_path, utils.toBoolean(asych)); // TO DO: Validation for the file_path.
-       
+
        // Set the Header for the XMLHttpRequest if an appropiate one is given.
        if(utils.isObject(header_object, ["type", "value"])){  // Sets a single Header
          xhr_obj.setRequestHeader(header_object.type, header_object.value);
@@ -110,30 +110,30 @@
            }
          }
        }
-       
+
        // All Headers Added
-       
+
        // Set the Response Type
        xhr_obj.responseType = validateAndSanitizeResponseType(response_type);
-       
+
        // Set the onload event handler to be the call to the success function passed to the promise.
        xhr_obj.onload = function(){
          success({status: this.status, statusText: xhr_obj.statusText, response: xhr_obj.response, responseText: xhr_obj.responseText})
        };
-       
+
        // Set the onerror event handler to be the call to the failure function passed to the promise.
        xhr_obj.onerror = function(){
          failure({status: this.status, statusText: xhr_obj.statusText, response: xhr_obj.response, responseText: xhr_obj.responseText})
        };
-       
+
        // Sends the actual XMLHttpRequest
        xhr_obj.send(params);
-       
+
      });
    }
-   
+
    return {
      "promiseXHR": promiseXHR
    };
-   
+
  }();
