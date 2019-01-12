@@ -170,7 +170,14 @@
       if(isNull(keys)){
         return true;  // basic object.
       }else if(isArray(keys)){  // List of necessary properties
-
+        for(let i = 0; i < keys.length; i++){
+          if(obj.hasOwnProperty('length') || !isNull(obj.length)){
+            continue;
+          }else{
+            return false;
+          }
+        }
+        return true;
       }else if(isFunction(keys) && obj instanceof keys){  // Class definition of object.
         return true;
       }else{  // bad input for the keys parameter.
@@ -194,7 +201,7 @@
    * @return {Boolean} True if the array is at least the given size, false otherwise.
    */
   function isArray(obj, size=1){
-    if(isObject(obj, ["length"]) && isInteger(obj.length) && isInteger(size) && size >= 0 && obj.length >= 0 && obj.length >= size){
+    if(isObject(obj) && obj.hasOwnProperty("length") && isInteger(obj.length) && isInteger(size) && size >= 0 && obj.length >= 0 && obj.length >= size){
       return true;
     }else{
       return false;
