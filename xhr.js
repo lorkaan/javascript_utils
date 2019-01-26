@@ -118,12 +118,20 @@
 
        // Set the onload event handler to be the call to the success function passed to the promise.
        xhr_obj.onload = function(){
-         success({status: this.status, statusText: xhr_obj.statusText, response: xhr_obj.response, responseText: xhr_obj.responseText})
+         let obj = {status: this.status, statusText: xhr_obj.statusText, response: xhr_obj.response};
+         if(xhr_obj.responseType == null || xhr_obj.responseType == undefined || xhr_obj.responseType == "" || xhr.responseType == "text"){
+           obj.responseText = xhr_obj.responseText;
+         }
+         success(obj);
        };
 
        // Set the onerror event handler to be the call to the failure function passed to the promise.
        xhr_obj.onerror = function(){
-         failure({status: this.status, statusText: xhr_obj.statusText, response: xhr_obj.response, responseText: xhr_obj.responseText})
+         let obj = {status: this.status, statusText: xhr_obj.statusText, response: xhr_obj.response};
+         if(xhr_obj.responseType == null || xhr_obj.responseType == undefined || xhr_obj.responseType == "" || xhr.responseType == "text"){
+           obj.responseText = xhr_obj.responseText;
+         }
+         failure(obj);
        };
 
        // Sends the actual XMLHttpRequest
