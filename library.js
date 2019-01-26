@@ -171,7 +171,7 @@
         return true;  // basic object.
       }else if(isArray(keys)){  // List of necessary properties
         for(let i = 0; i < keys.length; i++){
-          if(obj.hasOwnProperty('length') || !isNull(obj.length)){
+          if(obj.hasOwnProperty(keys[i]) || !isNull(obj[keys[i]])){
             continue;
           }else{
             return false;
