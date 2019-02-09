@@ -267,7 +267,8 @@
     'isFunction': isFunction,
     'isBoolean': isBoolean,
     'toBoolean': toBoolean,
-    'isEmptyString': isEmptyString
+    'isEmptyString': isEmptyString,
+    'isNull': isNull
   }
 
 }();
