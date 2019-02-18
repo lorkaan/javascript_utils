@@ -6,7 +6,9 @@
  * @author: Laurkan Rodriguez
  */
 
- export var xhr = function(){
+import utils from "./library.js";
+
+var xhr = function(){
 
    /** The strings representing the types of responses
     * allowed by the XMLHttpRequest.
@@ -137,3 +139,5 @@
    };
 
  }();
+
+ export default xhr;

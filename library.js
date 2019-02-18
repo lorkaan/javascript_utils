@@ -17,7 +17,7 @@
   */
 
  /** Unobtrusive Javascript style of creating a library. */
- export var utils = function(){
+ var utils = function(){
 
   /** Function for determining if a given parameter is
  * to be considered as a null value.
@@ -272,3 +272,5 @@
   }
 
 }();
+
+export default utils;
