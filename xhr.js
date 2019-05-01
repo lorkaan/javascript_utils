@@ -123,7 +123,7 @@ var xhr = function(){
        // Set the onload event handler to be the call to the success function passed to the promise.
        xhr_obj.onload = function(){
          let obj = {status: this.status, statusText: xhr_obj.statusText, response: xhr_obj.response};
-         if(xhr_obj.responseType == null || xhr_obj.responseType == undefined || xhr_obj.responseType == "" || xhr.responseType == "text"){
+         if(xhr_obj.responseType == null || xhr_obj.responseType == undefined || xhr_obj.responseType == "" || xhr_obj.responseType == "text"){
            obj.responseText = xhr_obj.responseText;
          }
          success(obj);
@@ -132,7 +132,7 @@ var xhr = function(){
        // Set the onerror event handler to be the call to the failure function passed to the promise.
        xhr_obj.onerror = function(){
          let obj = {status: this.status, statusText: xhr_obj.statusText, response: xhr_obj.response};
-         if(xhr_obj.responseType == null || xhr_obj.responseType == undefined || xhr_obj.responseType == "" || xhr.responseType == "text"){
+         if(xhr_obj.responseType == null || xhr_obj.responseType == undefined || xhr_obj.responseType == "" || xhr_obj.responseType == "text"){
            obj.responseText = xhr_obj.responseText;
          }
          failure(obj);
