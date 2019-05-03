@@ -257,6 +257,28 @@
     return typeof(obj) === 'string' && !isString(obj);
   }
 
+  /** Checks if a given object is a TypedArray.
+   *
+   * @param {any} obj The Object to check.
+   *
+   * @return {Boolean}  True if obj is a TypedArray, false otherwise.
+   */
+  function isTypedArray(obj){
+    return (
+      utils.isObject(obj, Uint8Array) ||
+      utils.isObject(obj, Int8Array) ||
+      utils.isObject(obj, Uint8ClampedArray) ||
+      utils.isObject(obj, Int16Array) ||
+      utils.isObject(obj, Uint16Array) ||
+      utils.isObject(obj, Int32Array) ||
+      utils.isObject(obj, Uint32Array) ||
+      utils.isObject(obj, Float32Array) ||
+      utils.isObject(obj, Float64Array) ||
+      utils.isObject(obj, BigInt64Array) ||
+      utils.isObject(obj, BigUint64Array)
+    );
+  }
+
   /* Functions exposed to the public (or to the utils scope) by this library. */
   return {
     'isString': isString,
@@ -268,7 +290,8 @@
     'isBoolean': isBoolean,
     'toBoolean': toBoolean,
     'isEmptyString': isEmptyString,
-    'isNull': isNull
+    'isNull': isNull,
+    'isTypedArray': isTypedArray
   }
 
 }();
