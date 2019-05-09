@@ -257,6 +257,25 @@
     return typeof(obj) === 'string' && !isString(obj);
   }
 
+  /** Checks if a given parameter is one of the following:
+   *    (1) An object of a given class, or sub-class.
+   *    (2) A sub-class of a given class.
+   *
+   * @param {any}   obj The parameter to check.
+   * @param {Class} cls The Class to compare against.
+   *
+   * @return {Boolean}  True if (1) or (2) is true, False otherwise.
+   */
+  function isClass(obj, cls){
+    return (
+      isFunction(cls) &&
+      (
+        isObject(obj) || isFunction(obj)
+      ) &&
+      obj instanceof cls
+    );
+  }
+
   /* Functions exposed to the public (or to the utils scope) by this library. */
   return {
     'isString': isString,
@@ -268,8 +287,9 @@
     'isBoolean': isBoolean,
     'toBoolean': toBoolean,
     'isEmptyString': isEmptyString,
-    'isNull': isNull
-  }
+    'isNull': isNull,
+    'isClass': isClass
+  };
 
 }();
 
