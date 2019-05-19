@@ -103,12 +103,11 @@ var xhr = function(){
        xhr_obj.open(validateAndSanitizeMethod(method), file_path, utils.toBoolean(asych)); // TO DO: Validation for the file_path.
 
        // Set the Header for the XMLHttpRequest if an appropiate one is given.
-       if(utils.isObject(header_object, ["type", "value"])){  // Sets a single Header
-         xhr_obj.setRequestHeader(header_object.type, header_object.value);
-       }else if(utils.isArray(header_object)){  // Sets multiple Headers, defined by an array or array-like data structure
-         for(let i = 0; i < header_object.length; i++){
-           if(utils.isObject(header_object, ["type", "value"])){  // Adds each element in the data structure if it is an appropiate Header.
-             xhr_obj.setRequestHeader(header_object.type, header_object.value);
+       if(utils.isObject(header_object)){ // assumes that header_object is dictionary of Header key, value pairs
+         let headKeys = Object.keys(header_object);
+         for(let i = 0; i < headKeys.length; i++){
+           if(utils.isString(headKeys[i]) && utils.isString(header_object[headKeys[i]])){
+             xhr_obj.setRequestHeader(headKeys[i], header_object[headKeys[i]]);
            }else{
              continue;
            }
